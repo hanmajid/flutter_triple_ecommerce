@@ -15,7 +15,7 @@ Simple Flutter e-commerce mobile application that uses [Triple](https://triple.f
 - [x] Undo search via [MementoMixin](https://triple.flutterando.com.br/docs/getting-started/Mixins#mementomixin).
 - [x] Tracks errors with [TripleObserver](https://triple.flutterando.com.br/docs/getting-started/tracking)
 - [x] Overrides [middleware](https://triple.flutterando.com.br/docs/getting-started/middleware) for sorting products by its price.
-- [ ] Triple HydratedMixin
+- [x] Persists last search result in shared preferences with [HydratedMixin](https://triple.flutterando.com.br/docs/getting-started/Mixins#hydratedmixin).
 - [ ] Triple Testing
 - [ ] Code documentation
 
@@ -24,4 +24,6 @@ Simple Flutter e-commerce mobile application that uses [Triple](https://triple.f
 - [`flutter_triple: ^1.2.6`](https://pub.dev/packages/flutter_triple): For Triple (Segmented State Pattern).
 - [`equatable: ^2.0.3`](https://pub.dev/packages/equatable): For overriding `==` operation of models.
 - [`http: ^0.13.4`](https://pub.dev/packages/http): For making HTTP requests.
+- [`hydrated_triple: ^0.0.3`](https://pub.dev/packages/hydrated_triple): For HydratedMixin (persisting state in shared preferences)
+- [`triple_test: ^0.0.8`](https://pub.dev/packages/triple_test): Store testing
 

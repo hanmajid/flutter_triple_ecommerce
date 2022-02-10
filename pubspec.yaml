@@ -37,6 +37,8 @@ dependencies:
   flutter_triple: ^1.2.6
   equatable: ^2.0.3
   http: ^0.13.4
+  hydrated_triple: ^0.0.3
+  triple_test: ^0.0.8
 
 dev_dependencies:
   flutter_test:

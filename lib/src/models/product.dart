@@ -42,6 +42,16 @@ class Product extends Equatable {
     );
   }
 
+  /// Creates [Product] object from map.
+  static Product fromMap(Map<String, dynamic> map) {
+    return Product(
+      name: map['name'],
+      price: map['price'],
+      currency: map['currency'],
+      imageUrl: map['image_url'],
+    );
+  }
+
   @override
   List<Object?> get props => [name, price, currency, imageUrl];
 
@@ -55,5 +65,14 @@ class Product extends Equatable {
       return 1;
     }
     return 0;
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'price': price,
+      'currency': currency,
+      'image_url': imageUrl,
+    };
   }
 }

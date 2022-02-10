@@ -42,9 +42,10 @@ class _SearchPageState extends State<SearchPage> {
     _searchBarFocusNode = FocusNode();
     searchStore.observer(
       onError: (error) {},
-      // onState: (state) {
-      //   _searchBarTextFieldController.text = state.searchKeyword;
-      // },
+      onState: (state) {
+        setState(() {});
+        _searchBarTextFieldController.text = state.searchKeyword;
+      },
     );
   }
 
@@ -86,10 +87,8 @@ class _SearchPageState extends State<SearchPage> {
   ///
   /// Sets the value of [_searchKeyword] to empty string.
   void _handleClickClear() {
-    setState(() {
-      _searchBarTextFieldController.clear();
-      searchStore.reset();
-    });
+    _searchBarTextFieldController.clear();
+    searchStore.reset();
   }
 
   void _handleSubmitSearch(String searchKeyword) {
@@ -97,10 +96,8 @@ class _SearchPageState extends State<SearchPage> {
       return;
     }
     _removeFocusSearchBar();
-    setState(() {
-      _searchBarTextFieldController.text = searchKeyword;
-      searchStore.search(searchKeyword);
-    });
+    _searchBarTextFieldController.text = searchKeyword;
+    searchStore.search(searchKeyword);
   }
 
   void _removeFocusSearchBar() {
@@ -119,6 +116,8 @@ class _SearchPageState extends State<SearchPage> {
     bool showSearchBarClearButton = _isSearchBarFocused;
     bool isSearchBarOnTop =
         _isSearchBarFocused || searchStore.state.searchKeyword.isNotEmpty;
+    print(
+        'isSearchBarOnTop: $isSearchBarOnTop ($_isSearchBarFocused : ${searchStore.state.searchKeyword})');
 
     return WillPopScope(
       onWillPop: _handleClickBack,

@@ -4,8 +4,9 @@ import 'package:flutter_triple_ecommerce/src/models/product.dart';
 import 'package:flutter_triple_ecommerce/src/repositories/product_repository.dart';
 import 'package:flutter_triple_ecommerce/src/states/search_state.dart';
 
-class SearchStore extends StreamStore<SearchError, SearchState>
-    with MementoMixin {
+class SearchStore<Error extends Object, State extends Object>
+    extends StreamStore<SearchError, SearchState>
+    with MementoMixin, HydratedMixin {
   final SearchState searchState;
   final ProductRepository productRepository = ProductRepository();
 

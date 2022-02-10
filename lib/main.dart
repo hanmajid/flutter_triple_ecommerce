@@ -3,6 +3,7 @@ import 'package:flutter_triple/flutter_triple.dart';
 import 'package:flutter_triple_ecommerce/my_app.dart';
 import 'package:flutter_triple_ecommerce/src/errors/errors.dart';
 import 'package:flutter_triple_ecommerce/src/repositories/analytics_repository.dart';
+import 'package:hydrated_triple/hydrated_triple.dart';
 
 void main() {
   /// Tracks error happening in the application.
@@ -12,6 +13,7 @@ void main() {
     }
     // print(triple);
   });
+  setTripleHydratedDelegate(SharedPreferencesHydratedDelegate());
 
   runApp(const MyApp());
 }
