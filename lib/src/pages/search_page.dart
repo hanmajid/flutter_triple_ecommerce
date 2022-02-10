@@ -119,8 +119,6 @@ class _SearchPageState extends State<SearchPage> {
     bool showSearchBarClearButton = _isSearchBarFocused;
     bool isSearchBarOnTop =
         _isSearchBarFocused || searchStore.state.searchKeyword.isNotEmpty;
-    bool showResult =
-        searchStore.canUndo() && searchStore.state.searchKeyword.isNotEmpty;
 
     return WillPopScope(
       onWillPop: _handleClickBack,
@@ -261,7 +259,8 @@ class _SearchPageState extends State<SearchPage> {
                                           width: 64,
                                         ),
                                   title: Text(product.name),
-                                  subtitle: Text(product.price),
+                                  subtitle: Text(
+                                      "${product.price} ${product.currency}"),
                                 ),
                               )
                               .toList(),

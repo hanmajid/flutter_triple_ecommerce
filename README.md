@@ -13,8 +13,8 @@ Simple Flutter e-commerce mobile application that uses [Triple](https://triple.f
 - [x] Searches products by a keyword from [eBay Sandbox API](https://developer.ebay.com/api-docs/buy/browse/static/overview.html) (uses [Executor](https://triple.flutterando.com.br/docs/getting-started/executors)).
 - [x] Handles state, loading, and error with [`ScopedBuilder`](https://triple.flutterando.com.br/docs/getting-started/using-flutter-triple#scopedbuilder).
 - [x] Undo search via [MementoMixin](https://triple.flutterando.com.br/docs/getting-started/Mixins#mementomixin).
-- [ ] Triple Tracking
-- [ ] Triple Middleware
+- [x] Tracks errors with [TripleObserver](https://triple.flutterando.com.br/docs/getting-started/tracking)
+- [x] Overrides [middleware](https://triple.flutterando.com.br/docs/getting-started/middleware) for sorting products by its price.
 - [ ] Triple HydratedMixin
 - [ ] Triple Testing
 - [ ] Code documentation

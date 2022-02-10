@@ -1,5 +1,6 @@
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:flutter_triple_ecommerce/src/errors/errors.dart';
+import 'package:flutter_triple_ecommerce/src/models/product.dart';
 import 'package:flutter_triple_ecommerce/src/repositories/product_repository.dart';
 import 'package:flutter_triple_ecommerce/src/states/search_state.dart';
 
@@ -63,9 +64,17 @@ class SearchStore extends StreamStore<SearchError, SearchState>
 
   @override
   Triple<SearchError, SearchState> middleware(newTriple) {
-    // if (triple.event == TripleEvent.state) {
-    //   return triple.copyWith(state + 2);
-    // }
+    /// Sorts the products by its price.
+    if (newTriple.event == TripleEvent.state &&
+        newTriple.state.products.isNotEmpty) {
+      var sortedProducts = List<Product>.from(newTriple.state.products);
+      sortedProducts.sort(((a, b) => a.compareTo(b)));
+      return newTriple.copyWith(
+        state: newTriple.state.copyWith(
+          products: sortedProducts,
+        ),
+      );
+    }
 
     return newTriple;
   }
