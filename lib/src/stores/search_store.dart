@@ -4,30 +4,40 @@ import 'package:flutter_triple_ecommerce/src/models/product.dart';
 import 'package:flutter_triple_ecommerce/src/repositories/product_repository.dart';
 import 'package:flutter_triple_ecommerce/src/states/search_state.dart';
 
-class SearchStore<Error extends Object, State extends Object>
-    extends StreamStore<SearchError, SearchState>
+/// Searching products store.
+///
+/// It uses [SearchState] as a state and [SearchError] as its error class.
+class SearchStore extends StreamStore<SearchError, SearchState>
     with MementoMixin, HydratedMixin {
+  /// Search state.
   final SearchState searchState;
+
+  /// The product repository.
   final ProductRepository productRepository = ProductRepository();
 
+  /// Constructor.
   SearchStore({
     required this.searchState,
-  }) : super(const SearchState(searchKeyword: ''));
+  }) : super(const SearchState());
 
+  /// Resets the search keyword.
   reset() {
     update(searchState.copyWith(searchKeyword: ''));
   }
 
+  /// Changes the search keyword to [newValue].
   updateSearchKeyword(String newValue) {
     update(searchState.copyWith(searchKeyword: newValue));
   }
 
-  search(String newValue) {
-    updateSearchKeyword(newValue);
+  /// Searches products with the given [searchKeyword].
+  search(String searchKeyword) {
+    updateSearchKeyword(searchKeyword);
     execute(
       () async {
-        var result = await productRepository.searchProducts(newValue);
-        if (state.searchKeyword == newValue && state.searchKeyword.isNotEmpty) {
+        var result = await productRepository.searchProducts(searchKeyword);
+        if (state.searchKeyword == searchKeyword &&
+            state.searchKeyword.isNotEmpty) {
           undo();
           return result;
         } else {
@@ -38,6 +48,7 @@ class SearchStore<Error extends Object, State extends Object>
     );
   }
 
+  /// Searches products from the current search keyword.
   research() {
     execute(
       () async {
@@ -53,6 +64,7 @@ class SearchStore<Error extends Object, State extends Object>
     );
   }
 
+  /// Undo states while skipping states with empty search keyword.
   undoSkipEmptySearchKeyword() {
     bool isFoundNotEmpty = false;
     while (canUndo() && !isFoundNotEmpty) {

@@ -7,9 +7,14 @@ import 'package:flutter_triple_ecommerce/src/models/product.dart';
 import 'package:flutter_triple_ecommerce/src/states/search_state.dart';
 import 'package:http/http.dart' as http;
 
+/// Repository for eBay products.
 class ProductRepository {
+  /// The HTTP connection timeout duration.
   static const timeoutDuration = Duration(seconds: 10);
 
+  /// Searches product with the given [searchKeyword].
+  ///
+  /// Returns a new [SearchState] or throws a [SearchError].
   Future<SearchState> searchProducts(String searchKeyword) async {
     http.Response oauthResult;
     try {

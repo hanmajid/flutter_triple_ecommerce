@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// Card shown when there is an error occurring.
 class ErrorCard extends StatelessWidget {
+  /// The message shown in the card.
   final String message;
 
+  /// Constructor.
   const ErrorCard({
     Key? key,
     required this.message,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_triple_ecommerce/src/pages/search_page.dart';
 
+/// Main application.
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

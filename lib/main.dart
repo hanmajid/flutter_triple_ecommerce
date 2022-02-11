@@ -5,6 +5,7 @@ import 'package:flutter_triple_ecommerce/src/errors/errors.dart';
 import 'package:flutter_triple_ecommerce/src/repositories/analytics_repository.dart';
 import 'package:hydrated_triple/hydrated_triple.dart';
 
+/// The application's main function.
 void main() {
   /// Tracks error happening in the application.
   TripleObserver.addListener((triple) {
@@ -13,7 +14,10 @@ void main() {
     }
     // print(triple);
   });
+
+  /// Sets Hydrated Mixin's delegate.
   setTripleHydratedDelegate(SharedPreferencesHydratedDelegate());
 
+  /// Runs the application.
   runApp(const MyApp());
 }

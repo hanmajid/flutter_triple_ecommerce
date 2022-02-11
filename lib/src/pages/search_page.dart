@@ -21,24 +21,24 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final TextEditingController _searchBarTextFieldController =
-      TextEditingController();
-
+  /// Search store.
   final SearchStore searchStore = SearchStore(
-    searchState: const SearchState(
-      searchKeyword: '',
-      // isSearchBarFocused: false
-    ),
+    searchState: const SearchState(),
   );
 
   /// True if search bar is focused.
   bool _isSearchBarFocused = false;
 
+  /// Search bar text field controller.
+  late TextEditingController _searchBarTextFieldController;
+
+  /// Search bar focus node
   late FocusNode _searchBarFocusNode;
 
   @override
   void initState() {
     super.initState();
+    _searchBarTextFieldController = TextEditingController();
     _searchBarFocusNode = FocusNode();
     searchStore.observer(
       onError: (error) {},
@@ -47,6 +47,13 @@ class _SearchPageState extends State<SearchPage> {
         _searchBarTextFieldController.text = state.searchKeyword;
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _searchBarTextFieldController.dispose();
+    _searchBarFocusNode.dispose();
+    super.dispose();
   }
 
   /// Handles click event on search bar.
@@ -91,6 +98,7 @@ class _SearchPageState extends State<SearchPage> {
     searchStore.reset();
   }
 
+  /// Handles submit event on search bar.
   void _handleSubmitSearch(String searchKeyword) {
     if (searchKeyword.isEmpty) {
       return;
@@ -100,6 +108,7 @@ class _SearchPageState extends State<SearchPage> {
     searchStore.search(searchKeyword);
   }
 
+  /// Removes focus from search bar.
   void _removeFocusSearchBar() {
     setState(() {
       _isSearchBarFocused = false;
@@ -116,8 +125,6 @@ class _SearchPageState extends State<SearchPage> {
     bool showSearchBarClearButton = _isSearchBarFocused;
     bool isSearchBarOnTop =
         _isSearchBarFocused || searchStore.state.searchKeyword.isNotEmpty;
-    print(
-        'isSearchBarOnTop: $isSearchBarOnTop ($_isSearchBarFocused : ${searchStore.state.searchKeyword})');
 
     return WillPopScope(
       onWillPop: _handleClickBack,
@@ -173,10 +180,9 @@ class _SearchPageState extends State<SearchPage> {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 16.0),
                                         child: SizedBox(
-                                          // height:
-                                          //     theme.textTheme.bodyText1?.fontSize,
                                           child: Text(
-                                              searchStore.state.searchKeyword),
+                                            searchStore.state.searchKeyword,
+                                          ),
                                         ),
                                       ),
                                     ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// Card shown when no searched products are found.
 class EmptyCard extends StatelessWidget {
+  /// The message shown in the card.
   final String message;
 
+  /// Constructor.
   const EmptyCard({
     Key? key,
     required this.message,

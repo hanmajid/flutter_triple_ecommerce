@@ -6,7 +6,7 @@ Simple Flutter e-commerce mobile application that uses [Triple](https://triple.f
 
 | Search products |
 | - |
-| <img src="screenshots/search_product.gif" height="300" /> |
+| <img src="screenshots/search_product.gif" height="400" /> |
 
 ## Features
 
@@ -17,13 +17,13 @@ Simple Flutter e-commerce mobile application that uses [Triple](https://triple.f
 - [x] Overrides [middleware](https://triple.flutterando.com.br/docs/getting-started/middleware) for sorting products by its price.
 - [x] Persists last search result in shared preferences with [HydratedMixin](https://triple.flutterando.com.br/docs/getting-started/Mixins#hydratedmixin).
 - [ ] Triple Testing
-- [ ] Code documentation
+- [x] Code documentation
 
 ## Packages
 
 - [`flutter_triple: ^1.2.6`](https://pub.dev/packages/flutter_triple): For Triple (Segmented State Pattern).
 - [`equatable: ^2.0.3`](https://pub.dev/packages/equatable): For overriding `==` operation of models.
 - [`http: ^0.13.4`](https://pub.dev/packages/http): For making HTTP requests.
-- [`hydrated_triple: ^0.0.3`](https://pub.dev/packages/hydrated_triple): For HydratedMixin (persisting state in shared preferences)
-- [`triple_test: ^0.0.8`](https://pub.dev/packages/triple_test): Store testing
+- [`hydrated_triple: ^0.0.3`](https://pub.dev/packages/hydrated_triple): For HydratedMixin (persisting state in shared preferences).
+- [`triple_test: ^0.0.8`](https://pub.dev/packages/triple_test): Store testing.
 

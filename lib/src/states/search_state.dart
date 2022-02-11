@@ -2,26 +2,30 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:flutter_triple_ecommerce/src/models/product.dart';
 
+/// Searching products state.
+///
+/// Implements [Serializable] so that it can be used in Hydrated Mixin.
 class SearchState extends Equatable implements Serializable<SearchState> {
+  /// The current search keyword.
   final String searchKeyword;
-  final List<Product> products;
-  // final bool isSearchBarFocused;
 
+  /// The currently displayed products.
+  final List<Product> products;
+
+  /// Constructor.
   const SearchState({
     this.searchKeyword = '',
     this.products = const [],
-    // this.isSearchBarFocused = false,
   });
 
+  /// Creates new [SearchState] with the copied properties
   SearchState copyWith({
     String? searchKeyword,
     List<Product>? products,
-    // bool? isSearchBarFocused,
   }) {
     return SearchState(
       searchKeyword: searchKeyword ?? this.searchKeyword,
       products: products ?? this.products,
-      // isSearchBarFocused: isSearchBarFocused ?? this.isSearchBarFocused,
     );
   }
 

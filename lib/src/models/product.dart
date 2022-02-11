@@ -42,19 +42,6 @@ class Product extends Equatable {
     );
   }
 
-  /// Creates [Product] object from map.
-  static Product fromMap(Map<String, dynamic> map) {
-    return Product(
-      name: map['name'],
-      price: map['price'],
-      currency: map['currency'],
-      imageUrl: map['image_url'],
-    );
-  }
-
-  @override
-  List<Object?> get props => [name, price, currency, imageUrl];
-
   /// Compares product ascending by its price.
   ///
   /// This function is used as a parameter for [List.sort] function.
@@ -67,6 +54,17 @@ class Product extends Equatable {
     return 0;
   }
 
+  /// Creates [Product] object from map.
+  static Product fromMap(Map<String, dynamic> map) {
+    return Product(
+      name: map['name'],
+      price: map['price'],
+      currency: map['currency'],
+      imageUrl: map['image_url'],
+    );
+  }
+
+  /// Returns the product as a map.
   Map<String, dynamic> toMap() {
     return {
       'name': name,
@@ -75,4 +73,7 @@ class Product extends Equatable {
       'image_url': imageUrl,
     };
   }
+
+  @override
+  List<Object?> get props => [name, price, currency, imageUrl];
 }
